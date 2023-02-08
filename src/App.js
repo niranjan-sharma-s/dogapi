@@ -1,23 +1,24 @@
-import logo from './logo.svg';
+
 import './App.css';
+import FetchData from './components/FetchData';
 
 function App() {
+
+  const data = FetchData()
+const {breed_group , name , id ,height, life_span, image} =  data
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+     {data && data.map((dog) => {
+      return (
+      <div key ={dog.id}>
+        <img src={dog.image.url} alt="dog_img" />
+       <div>Name: {dog.name}</div>
+       <div>Height: {dog.height.imperial}</div>
+       <div>Life span: {dog.life_span}</div>
+        </div>
+     )})}
+ 
     </div>
   );
 }
