@@ -1,11 +1,16 @@
 import { useState, useEffect } from "react";
+import SearchData from "./SearchData";
 
-const FetchData = () => {
+const FetchData = (breedName) => {
   const [dogData, setDogData] = useState([]);
-
+  
   useEffect(() => {
-    apiCall();
-  }, []);
+    const sendData = setTimeout(() => {
+      apiCall();
+    }, 1000);
+    
+    return () => clearTimeout(sendData);
+  }, [breedName]);
 
   const apiCall = async () => {
     var myHeaders = new Headers();
@@ -19,7 +24,7 @@ const FetchData = () => {
       redirect: "follow",
     };
 
-    await fetch("https://api.thedogapi.com/v1/breeds?limit=100", requestOptions)
+    await fetch("https://api.thedogapi.com/v1/breeds", requestOptions)
       .then((response) => response.json())
       .then((result) => setDogData(result))
       .catch((error) => console.log("error", error));
