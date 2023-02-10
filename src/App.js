@@ -4,9 +4,9 @@ import SearchData from './components/searchData/SearchData.js'
 
 function App() {
   return (
-    <>
+    <div className="app">
       <SearchData />
-    </>
+    </div>
   );
 }
 
