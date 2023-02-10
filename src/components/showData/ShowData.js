@@ -6,13 +6,15 @@ import {
   MdOutlineArrowBackIos,
 } from "react-icons/md";
 import Loading from "../loading/Loading";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const ShowData = (breed) => {
   const [loading, setLoading] = useState(true);
+  const [index, setIndex] = useState(0);
+
   const breedCondition = breed.breedName;
   const data = FetchData(breed.breedName);
-  const { breed_group, name, id, height, life_span, image } = data;
+  //const { breed_group, name, id, height, life_span, image } = data;
 
   const filterData = (breedCondition) => {
     if (breedCondition != "") {
@@ -25,27 +27,51 @@ const ShowData = (breed) => {
     }
   };
 
+  const dogInfo = filterData();
+
+  useEffect(() => {
+    const lastIndex = dogInfo.length - 1;
+    if (index < 0) {
+      setIndex(lastIndex);
+    }
+    if (index > lastIndex) {
+      setIndex(0);
+    }
+  }, [index, dogInfo]);
+
   return (
-    <div>
+    <div className="container">
       {!data.length && <Loading />}
-      <MdOutlineArrowBackIos />
-      {filterData().map((dog) => {
-        return (
-          <>
-            <div key={dog.id} className="dog-details">
-              <img src={dog.image.url} alt="dog_img" className="image" />
-              <div className="dogName">{dog.name}</div>
-              <div className="dogHeight">
-                {dog.height.imperial} cm at the withers
+      {data.length ? (
+        <button className="prev" onClick={() => setIndex(index - 1)}>
+          <MdOutlineArrowBackIos />
+        </button>
+      ): null}
+      {filterData().map((dog, dogIndex) => {
+        const { id, image, name, height, life_span } = dog;
+
+        if (index === dogIndex) {
+          return (
+            <>
+              <div key={id} className="dog-details">
+                <img src={image.url} alt="dog_img" className="image" />
+                <div className="dogName">{name}</div>
+                <div className="dogHeight">
+                  {height.imperial} cm at the withers
+                </div>
+                <div className="dogLife">
+                  {life_span} years average life span
+                </div>
               </div>
-              <div className="dogLife">
-                {dog.life_span} years average life span
-              </div>
-            </div>
-          </>
-        );
+            </>
+          );
+        }
       })}
-      <MdOutlineArrowForwardIos />
+      {data.length ? (
+        <button className="next" onClick={() => setIndex(index + 1)}>
+          <MdOutlineArrowForwardIos />
+        </button> 
+      ): null}
     </div>
   );
 };
