@@ -1,0 +1,15 @@
+.input-field{
+    display: block;
+    margin-right: auto;
+    margin-left: auto;
+    width: 38%;
+    margin-top: 2rem;
+    border: 2px solid;
+    height: 40px;
+    line-height: 50px;
+    border-radius: 2rem;
+    text-align: center;
+    font-size: larger;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    background-color: red;
+}

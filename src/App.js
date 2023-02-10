@@ -1,6 +1,6 @@
 import "./App.css";
-import SearchData from "./components/SearchData";
-import ShowData from "./components/ShowData";
+import SearchData from './components/SearchData'
+
 
 function App() {
   return (
