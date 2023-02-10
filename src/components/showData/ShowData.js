@@ -5,7 +5,7 @@ import {MdOutlineArrowForwardIos,MdOutlineArrowBackIos} from 'react-icons/md'
 import Loading from "../loading/Loading";
 import { useState } from "react";
 
-export const ShowData = (breed) => {
+ const ShowData = (breed) => {
 
   const [loading, setLoading] = useState(true)
   const breedCondition = breed.breedName;
@@ -59,4 +59,4 @@ export const ShowData = (breed) => {
   );
 };
 
-//export default ShowData;
+export default ShowData;

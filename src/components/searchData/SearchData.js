@@ -4,15 +4,15 @@ import FetchData from "../fetchData/FetchData";
 import ShowData from "../showData/ShowData"
 
 import "./SearchData.css"
-import "../SearchData/SearchData.css"
 
-import "test.css"
 
-export const SearchData = () => {
+
+
+ const SearchData = () => {
   const [breed, setBreed] = useState("");
 
   return (
-    <div className="searchBar" style={{"background-color":"red"}}>
+    <div className="searchBar">
       <input
         type="text"
         placeholder="Search Breed..."
@@ -24,4 +24,4 @@ export const SearchData = () => {
   );
 };
 
-//export default SearchData;
+export default SearchData;
