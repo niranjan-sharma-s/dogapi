@@ -5,12 +5,16 @@ const FetchData = (breedName) => {
   const [dogData, setDogData] = useState([]);
 
   useEffect(() => {
+    debounce()
+  }, [breedName]);
+
+  const debounce = () => {
     const sendData = setTimeout(() => {
       apiCall();
     }, 1000);
 
     return () => clearTimeout(sendData);
-  }, [breedName]);
+  }
 
   const apiCall = async () => {
     var myHeaders = new Headers();

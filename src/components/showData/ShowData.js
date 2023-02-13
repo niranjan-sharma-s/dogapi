@@ -14,7 +14,6 @@ const ShowData = (breed) => {
 
   const breedCondition = breed.breedName;
   const data = FetchData(breed.breedName);
-  //const { breed_group, name, id, height, life_span, image } = data;
 
   const filterData = (breedCondition) => {
     if (breedCondition != "") {
@@ -40,13 +39,13 @@ const ShowData = (breed) => {
   }, [index, dogInfo]);
 
   return (
-    <div className="container">
+    <div className="container" data-testid="container">
       {!data.length && <Loading />}
       {data.length ? (
-        <button className="prev" onClick={() => setIndex(index - 1)}>
+        <button className="prev" onClick={() => setIndex(index - 1)} data-testid="button">
           <MdOutlineArrowBackIos />
         </button>
-      ): null}
+      ) : null}
       {filterData().map((dog, dogIndex) => {
         const { id, image, name, height, life_span } = dog;
 
@@ -68,10 +67,10 @@ const ShowData = (breed) => {
         }
       })}
       {data.length ? (
-        <button className="next" onClick={() => setIndex(index + 1)}>
+        <button className="next" onClick={() => setIndex(index + 1)} data-testid="button">
           <MdOutlineArrowForwardIos />
-        </button> 
-      ): null}
+        </button>
+      ) : null}
     </div>
   );
 };

@@ -9,7 +9,7 @@ const SearchData = () => {
   const [breed, setBreed] = useState("");
 
   return (
-    <div className="searchBar">
+    <div className="searchBar" data-testid="search">
       
       <input
         type="text"
