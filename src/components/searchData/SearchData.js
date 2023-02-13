@@ -1,6 +1,5 @@
 import React from "react";
-import { useState, useEffect } from "react";
-import FetchData from "../fetchData/FetchData";
+import { useState } from "react";
 import ShowData from "../showData/ShowData";
 
 import "./SearchData.css";

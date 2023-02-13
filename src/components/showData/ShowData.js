@@ -9,19 +9,17 @@ import Loading from "../loading/Loading";
 import { useState, useEffect } from "react";
 
 const ShowData = (breed) => {
-  const [loading, setLoading] = useState(true);
   const [index, setIndex] = useState(0);
-
-  const breedCondition = breed.breedName;
   const data = FetchData(breed.breedName);
 
   const filterData = (breedCondition) => {
-    if (breedCondition != "") {
+    if (breedCondition !== "") {
       return data.filter((dog) => {
         if (dog.breed_group)
-          return dog.breed_group
+        {  return dog.breed_group
             .toLowerCase()
-            .includes(breed.breedName.toLowerCase());
+            .includes(breed.breedName.toLowerCase());}
+            return []
       });
     }
   };
@@ -65,7 +63,7 @@ const ShowData = (breed) => {
             </>
           );
         }
-      })}
+       return dog})}
       {data.length ? (
         <button className="next" onClick={() => setIndex(index + 1)} data-testid="button">
           <MdOutlineArrowForwardIos />

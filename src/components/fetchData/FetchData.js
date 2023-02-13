@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import SearchData from "../searchData/SearchData";
 
 const FetchData = (breedName) => {
   const [dogData, setDogData] = useState([]);
@@ -19,8 +18,6 @@ const FetchData = (breedName) => {
   const apiCall = async () => {
     var myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
-
-    var formdata = new FormData();
 
     var requestOptions = {
       method: "GET",
